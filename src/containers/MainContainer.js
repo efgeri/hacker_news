@@ -16,7 +16,7 @@ const MainContainer = () => {
   }, []);
 
   const loadStories = (ids) => {
-  const storyPromises = ids.map((storyID) => {
+  const storyPromises = ids.splice(0,50).map((storyID) => {
     return fetch(`https://hacker-news.firebaseio.com/v0/item/${storyID}.json`).then((res) => res.json())
   })
   Promise.all(storyPromises).then((storyData) => {
